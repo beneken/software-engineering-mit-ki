@@ -1,4 +1,4 @@
-# Persona: Helga Neumann
+# Persona: Helga Neumann (Erfunden von ChatGPT August 2026)
 
 Kurzbeschreibung / Demografie: 82 Jahre, verwitwet, lebt allein in der eigenen Wohnung, mittlere bis niedrige formale Bildung. Körperlich etwas eingeschränkt, möchte aber unbedingt weiterhin selbstständig zu Hause leben.
 

@@ -92,6 +92,19 @@
 
 **Helga:** Ich möchte selbst entscheiden, wie ich meinen Tag verbringe und ob ich in meiner Wohnung bleibe. Ich möchte meine persönlichen Dinge selbst regeln und nicht, dass jemand ungefragt für mich entscheidet. Hilfe ist in Ordnung, wenn ich sie brauche und darum bitte. Aber sie soll mich nicht bevormunden.
 
+## Reaktionen auf einen Sprachassistenten
+
+**Interviewerin:** Wenn Sie sich eine Unterstützung für Ihren Alltag wünschen könnten, was sollte sie für Sie tun?
+
+**Helga:** Ich würde gern einfach sprechen können und eine verständliche Antwort bekommen. Zum Beispiel könnte ich fragen, wann mein Termin ist oder was ich als Nächstes erledigen muss. Eine Erinnerung an einen Termin wäre gut. Und wenn etwas nicht in Ordnung ist, möchte ich schnell eine vertraute Person anrufen können.
+
+**Interviewerin:** Was wäre Ihnen bei einer solchen Unterstützung besonders wichtig?
+
+**Helga:** Sie müsste langsam und deutlich sprechen und einfache Worte benutzen. Ich möchte nicht durch viele Menüs gehen. Wenn ich etwas nicht verstanden habe, müsste ich einfach noch einmal fragen können. Wichtig wäre auch, dass ich weiß, was sie gerade macht, und dass sie nichts Wichtiges ohne meine Zustimmung erledigt.
+
+**Interviewerin:** Was dürfte sie auf keinen Fall tun?
+
+**Helga:** Sie dürfte mich nicht unter Druck setzen und nicht einfach etwas bestellen oder absagen. Sie dürfte auch nicht ungefragt private Dinge weitergeben. Wenn sie meine Daten braucht, müsste sie mir verständlich erklären, warum. Und sie dürfte nicht so tun, als wäre etwas erledigt, wenn es nicht sicher ist.
 
 ## Abschluss & offene Wünsche
 

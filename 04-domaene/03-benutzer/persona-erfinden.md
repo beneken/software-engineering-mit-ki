@@ -1,4 +1,5 @@
 # Prompt
+
 Ich will einen Sprachassistenten für Senioren entwickeln. Dieser soll Arzttermine buchen, online Bestellungen im Supermarkt machen oder ein Taxi rufen können. Kannst Du mir bitte eine Persona erfinden? Sie hat bereits Probleme mit dem Laufen, hat aber keine besonderen kognitiven 
 Einschränkungen. Sie wohnt bei uns in Rosenheim.
 

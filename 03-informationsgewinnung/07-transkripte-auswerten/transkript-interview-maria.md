@@ -93,6 +93,20 @@
 
 **Maria:** Ich möchte selbst entscheiden, wann ich zum Arzt gehe, was ich einkaufe und mit wem ich Kontakt habe. Auch beim Kochen und in meiner Wohnung möchte ich selbstständig bleiben. Unterstützung ist in Ordnung, wenn ich darum bitte oder wenn sie mir etwas erleichtert. Aber entscheiden möchte ich schon selbst.
 
+## Reaktionen auf einen Sprachassistenten
+
+**Interviewerin:** Wenn Sie sich eine Unterstützung für Ihren Alltag wünschen könnten, was sollte sie für Sie tun?
+
+**Maria:** Ich fände es hilfreich, wenn ich einfach sagen könnte, woran ich erinnert werden möchte. Zum Beispiel: „Erinnere mich morgen an den Augenarzt“ oder „Wann fährt der Bus zum Arzt?“ Auch beim Einkaufen könnte sie mir helfen, wenn ich frage, ob ich etwas bestellt habe. Das wäre besonders praktisch, wenn ich gerade nicht tippen möchte.
+
+**Interviewerin:** Was wäre Ihnen bei einer solchen Unterstützung besonders wichtig?
+
+**Maria:** Sie müsste mich gut verstehen und ruhig antworten. Bitte nicht mit schwierigen Wörtern und nicht zu schnell. Wenn ich etwas nicht verstanden habe, sollte ich noch einmal fragen können. Sie dürfte nicht einfach etwas bestellen, absagen oder entscheiden, ohne dass ich das ausdrücklich sage.
+
+**Interviewerin:** Was dürfte sie auf keinen Fall tun?
+
+**Maria:** Sie dürfte nicht unnötig meine Daten abfragen oder Gespräche weitergeben. Und sie dürfte nichts Wichtiges selbstständig erledigen, zum Beispiel einen Arzttermin absagen. Da möchte ich vorher gefragt werden. Wenn ich nicht weiß, wer meine Daten bekommt, wäre mir das unangenehm.
+
 ## Abschluss & offene Wünsche
 
 **Interviewerin:** Gibt es etwas, das wir noch nicht angesprochen haben und das Ihnen bei diesem Thema wichtig ist?

@@ -1,33 +1,3 @@
-# Interview Leitfaden
-
-## Prompt (Meta-Prompting)
-
-Erstelle einen halbstrukturierten Interview-Leitfaden für ein qualitatives Interview mit Senioren:
-
-Ziel des Interviews:
-
-Anforderungen, Bedürfnisse, Sorgen und Erwartungen an einen sprachbasierten Assistenzsystem für Seniorinnen und Senioren im Alltag zu verstehen.
-
-Vorgehen:
-
-Verwende offene, leicht verständliche Fragen. Vermeide technische Begriffe und Suggestivfragen.
-Gehe von konkreten Alltagssituationen aus. Frage nach konkreten Beispielen aus der näheren Vergangenheit. Berücksichtige mögliche kognitive oder körperliche Einschränkungen.
-
-Strukturiere den Leitfaden in folgende Abschnitte:
-
-- Einstieg & Vertrauensaufbau
-- Alltag & Routinen
-- Organisation & Herausforderungen
-- Techniknutzung & Erfahrungen
-- Unterstützung & Hilfe
-- Reaktionen auf einen Sprachassistenten (ohne Produktverkauf)
-- Abschluss & offene Wünsche
-
-Gib zu jeder Hauptfrage:
-- 1–2 mögliche Nachfragen (Probing Questions)
-
-## Vorschlag ChatGPT (August 2026)
-
 ### Einstieg & Vertrauensaufbau
 
 #### Möchten Sie mir zunächst ein bisschen von sich und Ihrem Alltag erzählen?
@@ -117,7 +87,7 @@ Zum Beispiel Einkaufen, Arztbesuche, Bus- oder Bahnfahrten oder andere Termine.
 
 ### Techniknutzung & Erfahrungen
 
-> **Hinweis für die Interviewführung:** Nicht voraussetzen, dass bestimmte Geräte vorhanden sind. Im Altersbericht zeigen sich große Unterschiede beim Zugang zu und beim Umgang mit digitalen Technologien, insbesondere abhängig von Alter, Bildung und Technikbiografie.
+**Hinweis für die Interviewführung:** Nicht voraussetzen, dass bestimmte Geräte vorhanden sind. Im Altersbericht zeigen sich große Unterschiede beim Zugang zu und beim Umgang mit digitalen Technologien, insbesondere abhängig von Alter, Bildung und Technikbiografie.
 
 #### Welche Geräte benutzen Sie in Ihrem Alltag?
 
