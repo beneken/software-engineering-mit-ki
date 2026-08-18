@@ -1,0 +1,98 @@
+@startuml
+title Concept Map: Sprachassistenten für Senioren
+
+skinparam shadowing false
+skinparam rectangle {
+  RoundCorner 15
+}
+
+rectangle "Sprachassistent\nfür Senioren" as VA
+
+rectangle "Ältere Menschen" as Seniors
+rectangle "Digitale Teilhabe" as Teilhabe
+rectangle "Digitale Souveränität" as Souveraenitaet
+rectangle "Digitale Kompetenzen" as Kompetenzen
+rectangle "Akzeptanz" as Akzeptanz
+rectangle "Benutzerfreundlichkeit" as UX
+rectangle "Internetzugang / WLAN" as Internet
+
+rectangle "Selbstständigkeit" as Selbst
+rectangle "Autonomie" as Autonomie
+rectangle "Sicherheit" as Sicherheit
+rectangle "Soziale Integration" as Integration
+rectangle "Lebensqualität" as Lebensqualitaet
+
+rectangle "Wohnen" as Wohnen
+rectangle "Smart Home" as SmartHome
+rectangle "Assistenzsysteme" as Assistenz
+rectangle "Notruf" as Notruf
+rectangle "Erinnerungshilfen" as Erinnerung
+rectangle "Kommunikation" as Kommunikation
+rectangle "Video-/Sprachkontakt\nmit Angehörigen" as Kontakt
+
+rectangle "Gesundheit" as Gesundheit
+rectangle "Pflege" as Pflege
+rectangle "Telemedizin" as Telemedizin
+rectangle "Monitoring" as Monitoring
+rectangle "Vitaldaten" as Vitaldaten
+
+rectangle "Risiken" as Risiken
+rectangle "Digitale Spaltung" as Spaltung
+rectangle "Datenschutz" as Datenschutz
+rectangle "Datensicherheit" as Datensicherheit
+rectangle "Überwachung" as Ueberwachung
+rectangle "Ethische Fragen" as Ethik
+rectangle "Menschliche Pflege\nund soziale Beziehungen" as Mensch
+
+Seniors --> VA : nutzen
+VA --> Teilhabe : ermöglicht
+VA --> Souveraenitaet : setzt voraus
+Souveraenitaet --> Kompetenzen : erfordert
+Kompetenzen --> Akzeptanz : fördern
+UX --> Akzeptanz : erhöht
+Internet --> VA : ist technische Voraussetzung
+
+VA --> Selbst : unterstützt
+VA --> Autonomie : stärkt
+VA --> Sicherheit : erhöht
+VA --> Integration : fördert
+VA --> Lebensqualitaet : verbessert potenziell
+
+VA --> Wohnen : wirkt im Lebensbereich
+Wohnen --> SmartHome : umfasst
+SmartHome --> Assistenz : nutzt
+Assistenz --> Notruf : beinhaltet
+Assistenz --> Erinnerung : beinhaltet
+VA --> Kommunikation : ermöglicht
+Kommunikation --> Kontakt : unterstützt
+Kontakt --> Integration : stärkt
+
+VA --> Gesundheit : unterstützt
+Gesundheit --> Telemedizin : umfasst
+Gesundheit --> Monitoring : nutzt
+Monitoring --> Vitaldaten : erfasst
+VA --> Pflege : unterstützt
+Pflege --> Mensch : darf nicht ersetzen
+
+Risiken --> Spaltung : umfasst
+Risiken --> Datenschutz : umfasst
+Risiken --> Datensicherheit : umfasst
+Risiken --> Ueberwachung : umfasst
+Risiken --> Ethik : umfasst
+
+Spaltung --> Teilhabe : behindert
+Datenschutz --> Akzeptanz : beeinflusst
+Ueberwachung --> Autonomie : gefährdet
+Ethik --> VA : rahmt Gestaltung
+
+Mensch --> Integration : bleibt zentral
+Mensch --> Pflege : bleibt zentral
+
+note right of VA
+Zentraler Designgedanke:
+Der Sprachassistent soll ältere Menschen
+unterstützen, nicht bevormunden
+oder menschliche Unterstützung ersetzen.
+end note
+
+@enduml

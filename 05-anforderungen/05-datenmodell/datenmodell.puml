@@ -1,0 +1,70 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+' ===== Bounded Contexts (as packages) =====
+
+package "Profil" {
+  class Senior <<personenbezogen/sensitiv>>
+  class Wohnort <<personenbezogen/sensitiv>>
+  class Vorliebe <<personenbezogen/sensitiv>>
+  class Kontakt <<personenbezogen/sensitiv>>
+}
+
+package "Gesundheit" {
+  class Arzt <<personenbezogen/sensitiv>>
+  class Termin <<personenbezogen/sensitiv>>
+  class Erinnerung <<personenbezogen/sensitiv>>
+}
+
+package "Einkauf" {
+  class Einkaufsliste <<personenbezogen/sensitiv>>
+  class Listeneintrag <<personenbezogen/sensitiv>>
+  class Bestellung <<personenbezogen/sensitiv>>
+}
+
+package "Mobilität" {
+  class Fahrt <<personenbezogen/sensitiv>>
+  class Mobilitätsanbieter <<neutral>>
+}
+
+package "Unterstützung" {
+  class Alltagshilfe <<personenbezogen/sensitiv>>
+  class Unterstützungsdienst <<neutral>>
+  class Einsatz <<personenbezogen/sensitiv>>
+}
+
+package "Kommunikation" {
+  class Kommunikationskanal <<neutral>>
+  class Nachricht <<personenbezogen/sensitiv>>
+}
+
+' ===== Relationships (with cardinalities) =====
+
+Senior "1" -- "1" Wohnort : hat
+Senior "1" -- "0..*" Vorliebe : hat
+Senior "1" -- "0..*" Kontakt : pflegt
+
+Senior "1" -- "0..*" Arzt : hat/kennt
+Senior "1" -- "0..*" Termin : plant
+Termin "1" -- "0..*" Erinnerung : löst aus
+
+Senior "1" -- "0..*" Einkaufsliste : führt
+Einkaufsliste "1" -- "0..*" Listeneintrag : enthält
+Senior "1" -- "0..*" Bestellung : tätigt
+Bestellung "0..*" -- "0..*" Listeneintrag : basiert auf
+
+Senior "1" -- "0..*" Fahrt : nutzt
+Fahrt "0..*" -- "1" Mobilitätsanbieter : wird erbracht von
+Fahrt "0..*" -- "0..1" Termin : steht im Zusammenhang mit
+
+Senior "1" -- "0..*" Einsatz : koordiniert
+Einsatz "0..*" -- "1" Alltagshilfe : betrifft
+Einsatz "0..*" -- "1" Unterstützungsdienst : wird erbracht von
+Einsatz "0..*" -- "0..1" Termin : steht im Zusammenhang mit
+
+Senior "1" -- "0..*" Nachricht : kommuniziert
+Nachricht "0..*" -- "1" Kommunikationskanal : über
+Nachricht "0..*" -- "1" Kontakt : an/von
+
+@enduml
