@@ -27,11 +27,8 @@ Ich habe beim Schreiben des Buchs ChatGPT und Claude sowie Codex bzw. Claude Cod
  können die Diagramme direkt als Quelltext behandelt und bearbeitet werden. 
  - Die Fotos und Bilder-Geschichten wurden über die Bildgenerierung in ChatGPT erstellt.
 
- ## Bepspielprojekt
+ ## Beispielprojekt
 
 Als Beispielprojekt dient ein Sprachassistent für Senioren, der in 
 Rosenheim eingesetzt werden soll. Wir versuchen diesen in der Lehrveranstaltung Natural User Interfaces im Winter 26/27 umzusetzen.
 Der Assistent ist hier nicht vollständig wieder gegeben, bei vielen Beispielen habe ich massiv gekürtzt. Die Auszüge aus fremden Dokumenten sollten noch als Zitate wahrgenommen werden.  
-
-Als Informationsquellen jeweils nur zitiert dienten:
- - Achter Altersbericht der Bundesregierung: https://www.achter-altersbericht.de/
