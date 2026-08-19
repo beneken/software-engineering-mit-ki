@@ -2,7 +2,7 @@
 
 Dieses Repository gehört zum 
 Buch 'Software-Engineering mit KI' erschienen 2026 im 
-Springer-Vieweg Verlag.
+Springer-Vieweg Verlag (siehe https://www.amazon.de/Software-Engineering-mit-verstehen-entwerfen-betreiben/dp/3662744457/).
 
 Das Buch stellt dar, wie LLMs (ChatGPT, Claude, ...) und KI-Agenten (Codex, Claude Code, ...) in Software-Engineering Projekten genutzt werden können. Wir starten bei allgemeiner Informationsgewinnung (Dokumente analysieren, Interviews führen, ...), 
 kümmern uns um die Analyse der Domäne (Begriffe, Benutzer, Prozesse,...), analysieren Anforderungen, entwerfen eine Architektur und programmieren mithilfe der KI. Auch Testen und der IT-Betrieb sind Thema. Wir setzen die KI dabei unterschiedlich ein:
