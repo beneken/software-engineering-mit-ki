@@ -9,4 +9,6 @@ Für Refactoring gibt es gute Gründe
  1. Es gibt neue Anforderungen, die nicht mehr zum aktuellen Design passen
  2. Wir haben mit Code-Smells wirklich erkennbare Probleme. Das wird an Hotspots im Repository sichtbar, da sich da Fehlerberichte häufen (Issues anschauen!) oder dieselbe Datei von verschiedenen Teammitgliedern häufig geändert wird (Hotspots anschauen) 
 
- Hier gibt es einige Beispiele zur Analyse und zum Planen von Refactorings. 
+Hier gibt es einige Beispiele zur Analyse und zum Planen von Refactorings. 
+
+ - [Code flexibler machen, Abhängigkeit analysieren](02-planung.md)
