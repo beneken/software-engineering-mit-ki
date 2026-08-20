@@ -1,0 +1,108 @@
+@startuml
+
+title Fachliches Domänenmodell: Unterstützung älterer Menschen im häuslichen Umfeld
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+
+' Personen und ihre fachlichen Rollen
+class Person
+class AeltererMensch
+class UnterstuetzendePerson
+class Angehoeriger
+class Pflegefachkraft
+class Arzt
+
+Person <|-- AeltererMensch
+Person <|-- UnterstuetzendePerson
+UnterstuetzendePerson <|-- Angehoeriger
+UnterstuetzendePerson <|-- Pflegefachkraft
+UnterstuetzendePerson <|-- Arzt
+
+' Lebens- und Versorgungskontext
+class Wohnumgebung
+class Pflegeversorgung
+class Gesundheitsversorgung
+class SozialeTeilhabe
+
+AeltererMensch "1" -- "1" Wohnumgebung : lebt in
+AeltererMensch "1" o-- "0..1" Pflegeversorgung : erhält
+AeltererMensch "1" o-- "0..*" Gesundheitsversorgung : nutzt
+AeltererMensch "1" o-- "0..*" SozialeTeilhabe : nimmt wahr
+
+Angehoeriger "0..*" -- "0..*" AeltererMensch : unterstützt
+Pflegefachkraft "0..*" -- "0..*" AeltererMensch : versorgt
+Arzt "0..*" -- "0..*" AeltererMensch : behandelt
+
+' Fachliche Bedarfe
+class Unterstuetzungsbedarf
+class Pflegebedarf
+class Mobilitaetsbedarf
+class Sicherheitsbedarf
+class Gesundheitsbedarf
+class BedarfAnSozialerTeilhabe
+class DigitalerUnterstuetzungsbedarf
+
+Unterstuetzungsbedarf <|-- Pflegebedarf
+Unterstuetzungsbedarf <|-- Mobilitaetsbedarf
+Unterstuetzungsbedarf <|-- Sicherheitsbedarf
+Unterstuetzungsbedarf <|-- Gesundheitsbedarf
+Unterstuetzungsbedarf <|-- BedarfAnSozialerTeilhabe
+Unterstuetzungsbedarf <|-- DigitalerUnterstuetzungsbedarf
+
+AeltererMensch "1" o-- "0..*" Unterstuetzungsbedarf : hat
+Wohnumgebung "1" o-- "0..*" Sicherheitsbedarf : prägt
+Pflegeversorgung "1" -- "0..*" Pflegebedarf : deckt
+Gesundheitsversorgung "1" -- "0..*" Gesundheitsbedarf : deckt
+SozialeTeilhabe "1" -- "0..*" BedarfAnSozialerTeilhabe : stärkt
+
+' Gesundheits- und Risikokontext
+class Gesundheitszustand
+class Pflegebeduerftigkeit
+class Mobilitaetseinschraenkung
+class KognitiveBeeintraechtigung
+class Demenz
+class Sturz
+class Notfall
+class Einsamkeit
+
+AeltererMensch "1" o-- "1" Gesundheitszustand : befindet sich in
+Gesundheitszustand "1" -- "0..1" Pflegebeduerftigkeit : umfasst
+Gesundheitszustand "1" -- "0..*" Mobilitaetseinschraenkung : umfasst
+Gesundheitszustand "1" -- "0..*" KognitiveBeeintraechtigung : umfasst
+KognitiveBeeintraechtigung <|-- Demenz
+Gesundheitszustand "1" -- "0..1" Einsamkeit : kann umfassen
+
+Mobilitaetseinschraenkung "0..*" --> "0..*" Sturz : begünstigt
+Sturz <|-- Notfall
+Sicherheitsbedarf "0..*" --> "0..*" Notfall : bezieht sich auf
+
+' Fachliche Unterstützungsangebote, ohne technische Einzelkomponenten
+class Unterstuetzungsangebot
+class Pflegeleistung
+class Alltagshilfe
+class MedizinischeVersorgung
+class Notfallhilfe
+class Hausnotruf
+class TelemedizinischeVersorgung
+class DigitaleSchulung
+class SozialesKontaktangebot
+
+Unterstuetzungsangebot <|-- Pflegeleistung
+Unterstuetzungsangebot <|-- Alltagshilfe
+Unterstuetzungsangebot <|-- MedizinischeVersorgung
+Unterstuetzungsangebot <|-- Notfallhilfe
+Unterstuetzungsangebot <|-- DigitaleSchulung
+Unterstuetzungsangebot <|-- SozialesKontaktangebot
+Notfallhilfe <|-- Hausnotruf
+MedizinischeVersorgung <|-- TelemedizinischeVersorgung
+
+Unterstuetzungsbedarf "1" -- "0..*" Unterstuetzungsangebot : wird gedeckt durch
+Unterstuetzungsangebot "0..*" -- "0..*" AeltererMensch : richtet sich an
+UnterstuetzendePerson "0..*" -- "0..*" Unterstuetzungsangebot : erbringt oder vermittelt
+Unterstuetzungsangebot "0..*" -- "0..*" Wohnumgebung : findet statt in
+
+note "Modellierungsunsicherheiten:\n\n* 'AeltererMensch' und 'Angehoeriger' sind Rollen, die eine Person gleichzeitig oder im Zeitverlauf einnehmen kann; die Generalisierung dient hier der Lesbarkeit.\n\n* 'Pflegebeduerftigkeit', 'Mobilitaetseinschraenkung', 'KognitiveBeeintraechtigung' und 'Einsamkeit' werden als Ausprägungen des Gesundheitszustands zusammengefasst. Die Studien behandeln Einsamkeit zugleich als soziale und gesundheitliche Lage.\n\n* 'Hausnotruf' und 'TelemedizinischeVersorgung' sind als fachliche Angebote modelliert, nicht als technische Geräte oder Softwaresysteme.\n\n* Ob ein Unterstützungsangebot von Angehörigen, Fachkräften oder beiden erbracht wird, ist je nach Versorgungssituation unterschiedlich; deshalb sind die Multiplizitäten bewusst weit gefasst." as Unsicherheiten
+
+@enduml

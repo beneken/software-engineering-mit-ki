@@ -92,7 +92,6 @@
 
 **Helga:** Ich möchte selbst entscheiden, wie ich meinen Tag verbringe und ob ich in meiner Wohnung bleibe. Ich möchte meine persönlichen Dinge selbst regeln und nicht, dass jemand ungefragt für mich entscheidet. Hilfe ist in Ordnung, wenn ich sie brauche und darum bitte. Aber sie soll mich nicht bevormunden.
 
-
 ## Abschluss & offene Wünsche
 
 **Interviewerin:** Gibt es etwas, das wir noch nicht angesprochen haben, das Ihnen bei diesem Thema wichtig ist?

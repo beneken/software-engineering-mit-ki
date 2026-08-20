@@ -1,0 +1,84 @@
+@startuml
+title Taskmodell: Hausarzttermin von Maria Huber
+
+skinparam backgroundColor white
+skinparam activity {
+  BackgroundColor #F8F8F8
+  BorderColor #555555
+  ArrowColor #555555
+}
+
+start
+
+:Hausarztbesuch wird notwendig
+(z. B. Kontrolle oder Beschwerden);
+
+:Entscheiden, wann der Termin
+stattfinden soll;
+note right
+Maria möchte selbst entscheiden,
+wann sie zum Arzt geht.
+end note
+
+:Hausarztpraxis kontaktieren;
+note right
+Der konkrete Kontaktweg ist im Interview
+nicht festgelegt. Maria nutzt für vertraute
+Kontakte bevorzugt das Telefon.
+end note
+
+:Termin mit der Praxis vereinbaren;
+
+:Datum und Uhrzeit auf einen Zettel
+und in den Kalender eintragen;
+note right
+Maria schreibt Termine auf, damit sie
+nichts vergisst. Einen Zettel kann sie
+allerdings auch verlegen.
+end note
+
+:Termin und Änderungen später
+noch einmal kontrollieren;
+
+:Anfahrt zum Hausarzt planen;
+
+if (Ist die Fahrt mit dem RVO-Bus
+zeitlich und körperlich machbar?) then (ja)
+  :RVO-Busverbindung prüfen;
+  :Abfahrtszeit und ausreichend Zeit
+für den Weg einplanen;
+  :Mit dem Rollator zur Haltestelle gehen;
+  :Mit dem Bus zur Arztpraxis fahren;
+else (nein)
+  :Taxi rufen;
+  :Abholzeit und Zieladresse abstimmen;
+  :Mit dem Taxi zur Arztpraxis fahren;
+endif
+
+:Mit dem Rollator vorsichtig zur Praxis
+und in die Praxis gehen;
+note right
+Längere Wege, Treppen und das Einsteigen
+in den Bus sind wegen der Knie anstrengend.
+Maria braucht mehr Zeit.
+end note
+
+:Zum vereinbarten Termin in der Praxis
+ankommen und Behandlung wahrnehmen;
+
+:Rückfahrt planen;
+
+if (Rückfahrt mit dem Bus passend
+und sicher?) then (ja)
+  :Busverbindung für die Rückfahrt prüfen;
+  :Mit dem Bus nach Hause fahren;
+else (nein)
+  :Taxi für die Rückfahrt rufen;
+  :Mit dem Taxi nach Hause fahren;
+endif
+
+:Zu Hause ankommen;
+
+stop
+@enduml
+
