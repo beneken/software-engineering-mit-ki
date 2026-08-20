@@ -1,0 +1,151 @@
+@startuml componentview
+
+!include <C4/C4_Component>
+
+title Component View – Buchhaltungssoftware
+
+LAYOUT_WITH_LEGEND()
+
+Person(apiUser, "API-Nutzer", "Nutzt die REST-Schnittstelle des Accounting Service")
+System_Ext(aiService, "OpenAI-kompatibler KI-Dienst", "Erzeugt strukturierte Rechnungsdaten aus Rechnungstext")
+System_Ext(credentialsApi, "Credentials-/Login-API", "Liefert Login-Token und KI-API-Key")
+ContainerDb_Ext(invoiceDb, "PostgreSQL", "PostgreSQL", "Persistiert Rechnungen, Positionen und Lieferanten")
+System_Ext(rabbitMq, "RabbitMQ", "AMQP", "Asynchrone Kommunikation zwischen den Services")
+System_Ext(invoiceFolder, "Rechnungseingangsordner", "Dateisystem", "Eingangsverzeichnis für PDF-Rechnungen")
+System_Ext(archiveFolder, "Archivverzeichnis", "Dateisystem", "Zielverzeichnis für archivierte JSON-Dateien")
+
+Container_Boundary(scanner, "Scanner Service\ncom.example.scanner") {
+    Boundary(scannerBootstrap, "Bootstrap & Configuration") {
+        Component(scannerMain, "Main", "Java Application", "Startet Scanner und Verarbeitungsthreads")
+        Component(scannerConfig, "ScannerConfig", "Configuration", "Liest Eingangsverzeichnis, Queue-Namen und maximale Dateigröße")
+    }
+    Boundary(scannerApplication, "Application Layer") {
+        Component(directoryScanner, "DirectoryScanner", "Application Service", "Überwacht das Eingangsverzeichnis und erkennt neue PDF-Dateien")
+        Component(scannerProcessor, "DocumentProcessor", "Application Service", "Verarbeitet neue Dokumente aus der internen BlockingQueue")
+    }
+    Boundary(scannerDomain, "Domain / Data Layer") {
+        Component(documentModel, "Document", "Record / JSON DTO", "Repräsentiert PDF-Version, Text, Dateiname und Metadaten")
+    }
+    Boundary(scannerInfrastructure, "Infrastructure Layer") {
+        Component(pdfLoader, "PDFLoader", "Apache PDFBox Adapter", "Liest PDF-Text und Metadaten; weist verschlüsselte PDFs zurück")
+        Component(messageBusHandler, "MessageBusHandler", "Messaging Adapter", "Publiziert extrahierte Dokumentdaten nach RabbitMQ")
+    }
+}
+
+Container_Boundary(accounting, "Accounting Service\ncom.example.accounting") {
+    Boundary(accountingBootstrap, "Bootstrap & Configuration") {
+        Component(accountingMain, "Main", "Spring Boot Application", "Startet die Spring-Boot-Anwendung")
+        Component(accountingRabbitConfig, "RabbitMQConfig", "Spring Configuration", "Konfiguriert AMQP-Verbindung und Listener-Queue")
+    }
+    Boundary(accountingPresentation, "Presentation Layer") {
+        Component(invoiceController, "InvoiceController", "REST Controller", "Erstellt Rechnungen über /api/v1/invoice")
+        Component(supplierController, "SupplierController", "REST Controller", "Liest Lieferanten über /api/v1/supplier")
+        Component(exceptionHandlers, "ExceptionHandlers", "REST Advice", "Übersetzt Validierungsfehler in HTTP-400-Antworten")
+    }
+    Boundary(accountingApplication, "Application Layer") {
+        Component(accountingProcessor, "DocumentProcessor", "RabbitMQ Listener", "Orchestriert KI-Verarbeitung, Persistenz und Ausgabe-Nachricht")
+        Component(invoiceService, "InvoiceService", "Application Service", "Prüft Duplikate und speichert Rechnungen mit Positionen")
+        Component(supplierService, "SupplierService", "Application Service", "Sucht vorhandene Lieferanten oder legt sie an")
+    }
+    Boundary(accountingDomain, "Domain Layer") {
+        Component(invoiceModel, "Invoice", "JPA Entity / Domain Model", "Rechnungsstammdaten, Status und Beziehungen")
+        Component(invoiceItemModel, "InvoiceItem / InvoiceItemId", "JPA Entity / Value Object", "Rechnungsposition mit Menge, Preis und Positionsnummer")
+        Component(supplierModel, "Supplier", "JPA Entity / Domain Model", "Lieferantenstammdaten und Beziehung zu Rechnungen")
+    }
+    Boundary(accountingPersistence, "Persistence Layer") {
+        Component(invoiceRepositories, "InvoiceRepository / InvoiceItemRepository", "Spring Data JPA", "Persistenzzugriff für Rechnungen und Positionen")
+        Component(supplierRepository, "SupplierRepository", "Spring Data JPA", "Persistenzzugriff für Lieferanten")
+    }
+    Boundary(accountingInfrastructure, "Infrastructure / External Adapters") {
+        Component(aiProxy, "AiProxy", "OpenAI Java SDK Adapter", "Sendet Rechnungstext und JSON-Schema an den KI-Dienst")
+        Component(credentialsProxy, "CredentialsProxy", "HTTP Client", "Authentifiziert sich und beschafft den KI-API-Key")
+    }
+}
+
+Container_Boundary(archive, "Archive Service\ncom.example.archive") {
+    Boundary(archiveBootstrap, "Bootstrap Layer") {
+        Component(archiveMain, "Main", "Java Application", "Startet Verbindung und registriert den Consumer")
+    }
+    Boundary(archiveApplication, "Application Layer") {
+        Component(archiveWriter, "Archive Writer", "Java NIO Service", "Schreibt verarbeitete Nachrichten als JSON-Dateien")
+    }
+}
+
+Container_Boundary(shared, "Shared Library\ncom.example.shared") {
+    Boundary(sharedConfiguration, "Configuration Layer") {
+        Component(configuration, "Configuration / IConfiguration", "Configuration API", "Liest und validiert Umgebungsvariablen, Pfade und Ports")
+        Component(configurationException, "ConfigurationException", "Exception", "Signalisiert fehlende oder ungültige Konfiguration")
+    }
+    Boundary(sharedMessaging, "Messaging Infrastructure Layer") {
+        Component(rabbitConfig, "RabbitMQConfig", "Configuration", "Bündelt RabbitMQ-Verbindungsdaten")
+        Component(rabbitConnector, "RabbitMQConnector", "AMQP Adapter", "Öffnet RabbitMQ-Verbindungen und erzeugt Queue-Zugriffe")
+        Component(rabbitQueue, "RabbitMQQueue", "AMQP Adapter", "Deklariert Queues, publiziert Nachrichten und verarbeitet ACK/NACK")
+    }
+}
+
+' Scanner Service
+Rel(scannerMain, scannerConfig, "verwendet")
+Rel(scannerMain, directoryScanner, "startet")
+Rel(scannerMain, scannerProcessor, "startet")
+Rel(scannerMain, rabbitConnector, "initialisiert")
+Rel(scannerConfig, configuration, "liest Konfiguration")
+Rel(invoiceFolder, directoryScanner, "neue PDF-Datei")
+Rel(directoryScanner, pdfLoader, "lädt PDF")
+Rel(pdfLoader, documentModel, "erzeugt")
+Rel(directoryScanner, scannerProcessor, "übergibt JSON")
+Rel(scannerProcessor, messageBusHandler, "sendet Dokument")
+Rel(messageBusHandler, rabbitQueue, "publiziert")
+Rel(rabbitQueue, rabbitMq, "AMQP")
+
+' Accounting Service
+Rel(apiUser, invoiceController, "nutzt REST API")
+Rel(accountingMain, accountingRabbitConfig, "initialisiert")
+Rel(accountingMain, accountingProcessor, "startet Listener")
+Rel(accountingProcessor, invoiceModel, "erzeugt validiertes Modell")
+Rel(accountingProcessor, invoiceItemModel, "verarbeitet Positionen")
+Rel(accountingProcessor, aiProxy, "sendet Rechnungstext")
+Rel(accountingProcessor, invoiceService, "delegiert Persistenz")
+Rel(accountingProcessor, rabbitMq, "liest / publiziert AMQP")
+Rel(invoiceController, invoiceService, "delegiert")
+Rel(supplierController, supplierService, "delegiert")
+Rel(exceptionHandlers, invoiceController, "behandelt Validierungsfehler")
+Rel(exceptionHandlers, supplierController, "behandelt Validierungsfehler")
+Rel(invoiceService, supplierService, "ermittelt Lieferant")
+Rel(invoiceService, invoiceRepositories, "persistiert Rechnung")
+Rel(invoiceService, invoiceItemModel, "ordnet Positionen zu")
+Rel(supplierService, supplierRepository, "persistiert Lieferant")
+Rel(invoiceRepositories, invoiceModel, "verwaltet")
+Rel(invoiceRepositories, invoiceItemModel, "verwaltet")
+Rel(supplierRepository, supplierModel, "verwaltet")
+Rel(invoiceModel, invoiceItemModel, "enthält")
+Rel(invoiceModel, supplierModel, "referenziert")
+Rel(invoiceRepositories, invoiceDb, "JPA / JDBC")
+Rel(supplierRepository, invoiceDb, "JPA / JDBC")
+Rel(aiProxy, credentialsProxy, "beschafft API-Key")
+Rel(aiProxy, aiService, "HTTPS / Chat Completion")
+Rel(credentialsProxy, credentialsApi, "HTTPS / Login")
+Rel(accountingRabbitConfig, rabbitMq, "AMQP")
+
+' Archive Service
+Rel(archiveMain, archiveWriter, "registriert Consumer")
+Rel(archiveMain, rabbitConnector, "initialisiert")
+Rel(archiveMain, rabbitMq, "AMQP")
+Rel(archiveWriter, archiveFolder, "schreibt JSON")
+
+' Shared Library
+Rel(rabbitConnector, rabbitConfig, "verwendet")
+Rel(rabbitConnector, rabbitQueue, "erzeugt")
+Rel(rabbitConfig, configuration, "liest Zugangsdaten")
+Rel(configuration, configurationException, "meldet Fehler")
+
+note right of rabbitMq
+  Queue-Namen im aktuellen Quellstand:
+  Scanner: InvoiceInput
+  Accounting Listener: DocumentInputQueue
+  Accounting Output: ProcessedDocumentQueue
+  Archive Consumer: ProcessedInvoices
+end note
+
+SHOW_LEGEND()
+
+@enduml
