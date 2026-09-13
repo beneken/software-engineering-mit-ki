@@ -1,0 +1,6 @@
+## Prompt
+Ich arbeite mit der Persona <Persona>, ein Transkript des Interviews findest du hier <Transkript>. Bitte erstelle ein Taskmodell: In welchen Schritten bucht sie normalerweise Termine beim Hausarzt? Bitte stelle das Taskmodell als UML-Aktivitätsdiagramm im PlantUML-Format dar.
+
+## Kommentar
+Normalerweise sollte das Taskmodell aus einer Beobachtung oder einem Interview stammen. Wir erfinden hier eines.
+

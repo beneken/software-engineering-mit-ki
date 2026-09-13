@@ -1,7 +1,7 @@
 # Software-Engineering mit KI
 
 Dieses Repository gehört zum 
-Buch 'Software-Engineering mit KI' erschienen 2026 im 
+Buch 'Software-Engineering mit KI' erschienen / erscheint im Dezember 2026 im 
 Springer-Vieweg Verlag (siehe https://www.amazon.de/Software-Engineering-mit-verstehen-entwerfen-betreiben/dp/3662744457/).
 
 Das Buch stellt dar, wie LLMs (ChatGPT, Claude, ...) und KI-Agenten (Codex, Claude Code, ...) in Software-Engineering Projekten genutzt werden können. Wir starten bei allgemeiner Informationsgewinnung (Dokumente analysieren, Interviews führen, ...), 
@@ -12,23 +12,19 @@ kümmern uns um die Analyse der Domäne (Begriffe, Benutzer, Prozesse,...), anal
  - KI als Tutor (z.B. um eine neue Bibliothek kennen zu lernen)
  - KI als Kollegin (z.B. Autonome Bearbeitung von Issues bis zum Merge-Request)
 
-Das Repository enthält Beispiele für Prompts und auch Ergebnisse, die ich mit der KI erzeugt habe. Das Repository wird fortlaufend gepflegt,
-im Wintersemester 26/27 läuft eine Projektlehrveranstaltung an der TH-Rosenheim mit den Konzepten. 
+## Beispiele
 
-## Werkzeuge
+Das Repository enthält Beispiele für Prompts und auch Ergebnisse, die ich mit der KI erzeugt habe. Das Repository wird fortlaufend gepflegt. Die Beispiele sollen einen praktischen
+Eindruck vermitteln, welche Ergebnisse in welcher Qualität erzeugt werden können.
+Siehe [Beispiele](./beispiele/README.md)
 
-Die Beispiele sind mit unterschiedlichen KIs erstellt bzw. getestet worden. Es waren jeweils "Firmenlizenzen" und die Daten wurden nicht zum Training der KI verwendet. Als Quellen habe ich nur frei im Internet verfügbare Dokumente genutzt, diese wurden mit hoher Wahrscheinlichkeit über die Common-Crawl-Datensätze an anderer
-Stelle von den Herstellern selbst zum Training eingesetzt.
+## Vorlesung
 
-Ich habe beim Schreiben des Buchs ChatGPT und Claude sowie Codex bzw. Claude Code verwendet. Wir wollen im Winter 26/27 alternativ eine selbst gehostete KI anbieten. 
+Ab dem Wintersemester 26/27 läuft eine Lehrveranstaltung im 7. Fachsemester des
+Studiengangs Informatik an der TH-Rosenheim. Wir versuchen dort
+mit kleinen studentischen Teams Produkte zu entwickeln. Wir stellen den Studierenden
+im ersten Schritt Claude Code zur Verfügung. Mittelfristig steigen wir auf eigene
+Infrastrukturen um. 
 
- - Alle Texte sind in Markdown abgefasst
- - Die UML-Diagramme sind mit PlantUML erzeugt, in einzelnen Fällen mit Mermaid. Die .puml-Dateien können direkt in Markdown verwendet werden. Für die Dokumentation in Latex oder einer Textverarbeitung können die Diagramme leicht in eps oder andere Vektor-Formate konvertiert werden. Mit Plugins für VS-Code oder die IDEA-Werkzeuge 
- können die Diagramme direkt als Quelltext behandelt und bearbeitet werden. 
- - Die Fotos und Bilder-Geschichten wurden über die Bildgenerierung in ChatGPT erstellt.
+Ich stelle hier einige Unterlagen zur Verfügung, in der Hoffnung für Kolleginnen und Kollegen hilfreich zu sein. Freue mich über Feedback! Siehe [Vorlesung](./vorlesung/README.md)
 
- ## Beispielprojekt
-
-Als Beispielprojekt dient ein Sprachassistent für Senioren, der in 
-Rosenheim eingesetzt werden soll. Wir versuchen diesen in der Lehrveranstaltung Natural User Interfaces im Winter 26/27 umzusetzen.
-Der Assistent ist hier nicht vollständig wieder gegeben, bei vielen Beispielen habe ich massiv gekürtzt. Die Auszüge aus fremden Dokumenten sollten noch als Zitate wahrgenommen werden.  
